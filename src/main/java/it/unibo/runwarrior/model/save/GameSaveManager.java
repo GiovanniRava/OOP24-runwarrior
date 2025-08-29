@@ -125,7 +125,7 @@ public final class GameSaveManager {
      * @param levelsCompleted the new number of completed levels that needs to be >0 && <=3
      */
     public void setLevelsCompleted(final int levelsCompleted) {
-        if (levelsCompleted <= 0 || levelsCompleted > 3) {
+        if (levelsCompleted < 0 || levelsCompleted > 3) {
             throw new IllegalArgumentException(
                 "I livelli sono compresi tra 1 e " + MAX_LEVEL + " Provato a salvare: " + levelsCompleted);
         }
