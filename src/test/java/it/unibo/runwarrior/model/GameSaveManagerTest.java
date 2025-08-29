@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.AfterEach;
+
 /**
  * GameSaveManagerTest checks if the singleton is respected.
  * Checks if the saving and loading works.
@@ -18,6 +20,10 @@ class GameSaveManagerTest {
     private static final int COIN_NUM = 115;
     private static final int WRONG_LEVEL_NUM = 5;
     private GameSaveManager gsm;
+    private int prevLevelsCompleted;
+    private int prevCoinCollected;
+    private boolean prevPremiumSkin;
+    private String prevSkin;
 
     /**
      * Create a test instance of the game with random variables.
@@ -25,9 +31,26 @@ class GameSaveManagerTest {
     @BeforeEach
     void resetSingleton() {
         gsm = GameSaveManager.getInstance();
+
+        prevLevelsCompleted = gsm.getLevelsCompleted();
+        prevCoinCollected = gsm.getCoinCollected();
+        prevSkin = gsm.getSelectedSkinName();
+        prevPremiumSkin = gsm.isSkinPremiumSbloccata();
+
         gsm.setLevelsCompleted(2);
         gsm.setCoinCollected(100);
         gsm.setSkinPremiumSbloccata(false);
+    }
+
+    /**
+     * Set the game state before the state.
+     */
+    @AfterEach
+    void setPreviousState() {
+        gsm.setCoinCollected(prevCoinCollected);
+        gsm.setLevelsCompleted(prevLevelsCompleted);
+        gsm.setSkinPremiumSbloccata(prevPremiumSkin);
+        gsm.setSelectedSkinName(prevSkin);
     }
 
     /**
