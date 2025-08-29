@@ -18,7 +18,7 @@ class TestEnemyViewFactory {
     private static final int WRONG_TYPE = 99;
     private EnemyViewFactoryImpl enemyViewFactoryImpl;
     private final GameLoopController glc = new GameLoopController(new JFrame(), "tryMap.txt", "Map2/forest_theme.txt", 
-        "/Map2/enemiesMap2.txt", "/Coins/CoinCoordinates_map2.txt");
+        "/Map2/enemiesMap2.txt", "/Coins/CoinCoordinates_map2.txt", false);
     private EnemyView guardView;
     private EnemyView snakeView;
     private EnemyView wizardView;

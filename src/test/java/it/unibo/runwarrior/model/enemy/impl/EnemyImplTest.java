@@ -37,7 +37,7 @@ class EnemyImplTest {
     @BeforeEach
     void setUp() {
         final GameLoopController glc = new GameLoopController(mainFrame, "tryMap.txt", "Map2/forest_theme.txt", 
-                                        "/Map2/enemiesMap2.txt", "/Coins/CoinCoordinates_map2.txt");
+                                        "/Map2/enemiesMap2.txt", "/Coins/CoinCoordinates_map2.txt", true);
         glc.getGlp().startGame();
         glc.getGlp().endGame();
         enemyHandler = new EnemyHandlerImpl(glc, enemyViewFactory);
