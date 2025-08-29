@@ -63,9 +63,10 @@ public class GameLoopController {
      * @param themePath the path for loading the images of tile
      * @param enemiesPath the path for loadin the enemies position
      * @param coinsPath the path for loading the coin position
+     * @param createPanel true if the glp has to be created
      */
     public GameLoopController(final JFrame mainFrame, final String mapPath, final String themePath,
-                                final String enemiesPath, final String coinsPath) {
+                                final String enemiesPath, final String coinsPath, final boolean createPanel) {
         final GameMap gameMap = GameMap.load(mapPath, themePath);
         this.coinController = new CoinControllerImpl();
         this.levelIndex = calculateLevelIndex(mapPath);
@@ -90,7 +91,11 @@ public class GameLoopController {
 
         final Score score = new Score();
         this.scoreController = new ScoreControllerImpl(score);
-        this.glp = new GameLoopPanel(mainFrame, this);
+        if (createPanel) {
+            this.glp = new GameLoopPanel(mainFrame, this);
+        } else {
+            this.glp = null;
+        }
         initializePlayer();
     }
 

@@ -24,7 +24,7 @@ class TestGoblinView {
     @BeforeEach
     void setUp() {
         final GameLoopController glc = new GameLoopController(mainFrame, "tryMap.txt", "Map2/forest_theme.txt", 
-                            "/Map2/enemiesMap2.txt", "/Coins/CoinCoordinates_map2.txt");
+                            "/Map2/enemiesMap2.txt", "/Coins/CoinCoordinates_map2.txt", false);
         goblinView = new GoblinView(glc);
     }
 
