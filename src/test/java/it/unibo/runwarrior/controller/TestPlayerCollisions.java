@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.awt.Rectangle;
 import javax.swing.JFrame;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -56,6 +57,7 @@ class TestPlayerCollisions {
     private final JFrame testFrame = new JFrame();
     private GameSaveManager gsm;
     private String prevSkin;
+    private boolean prevPremiumSkin;
     private GameLoopController glc;
     private CharacterComand cmd;
     private GameMap gameMap1;
@@ -67,11 +69,14 @@ class TestPlayerCollisions {
         gameMap1 = GameMap.load(FIRST_STRING, SECOND_STRING);
         mapHandler1 = new HandlerMapElement(gameMap1);
         cmd = new CharacterComand();
+        gsm = GameSaveManager.getInstance();
+        prevSkin = gsm.getSelectedSkinName();
+        prevPremiumSkin = gsm.isSkinPremiumSbloccata();
+        gsm.setSkinPremiumSbloccata(false);
+        gsm.setSelectedSkinName(SKIN);
         glc = new GameLoopController(testFrame, FIRST_STRING, SECOND_STRING, 
         "/Map2/enemiesMap2.txt", "/Coins/CoinCoordinates_map2.txt", false);
         tileSize = TRY_TYLE;
-        gsm = GameSaveManager.getInstance();
-        prevSkin = gsm.getSelectedSkinName();
     }
 
     private boolean isTouchingUp(final Rectangle playerArea, final Rectangle enemyArea) {
@@ -88,7 +93,6 @@ class TestPlayerCollisions {
         return hM.getBlocks().get(blockIndex).isCollision();
     }
 
-    //CAMBIA MAPPA PER RIUSARE PIù NUMERI
     @Test
     void testCollisionTile() {
         final Character player = new NakedWarrior(glc, cmd, mapHandler1, null);
@@ -121,7 +125,6 @@ class TestPlayerCollisions {
     void testCollisionPowerup() {
         final PowerUpController pCon = new PowerUpController(glc, mapHandler1, mapHandler1.getMap());
         final Character player = new NakedWarrior(glc, cmd, mapHandler1, pCon);
-        gsm.setSelectedSkinName(SKIN);
         final PowerUpDetectionImpl collisionPowerups = new PowerUpDetectionImpl(glc, pCon);
 
         assertTrue(isTouchingUp(new Rectangle(FIFTY, FIFTY, FIFTY, FIFTY), 
@@ -141,7 +144,6 @@ class TestPlayerCollisions {
         collisionPowerups.checkCollisionWithPowers(player, player.getMovementHandler());
         assertEquals(i + 1, glc.getPowersHandler().getPowers());
         assertEquals(ArmourWarrior.class, glc.getPlayer().getClass());
-        gsm.setSelectedSkinName(prevSkin);
     }
 
     @Test
@@ -182,5 +184,11 @@ class TestPlayerCollisions {
         player.getArea().setLocation(FIFTY * tileSize, FIVE_SIX_Z);
         collisionCoins.controlCoinCollision(player);
         assertEquals(coinController.getCoinsCollected(), 1);
+    }
+
+    @AfterEach
+    void setPreviousState() {
+        gsm.setSkinPremiumSbloccata(prevPremiumSkin);
+        gsm.setSelectedSkinName(prevSkin);
     }
 }
