@@ -60,7 +60,7 @@ public class GameMusic {
     }
 
     /**
-     * Close the current istance of the clip
+     * Close the current istance of the clip.
      */
     public void close() {
         if (this.clip != null) {

@@ -8,8 +8,8 @@ import it.unibo.runwarrior.view.GameMusic;
 /**
  * Manager to handle all the sounds of the game.
  */
-public class SoundManager {
-    private static List<GameMusic> ALL_SOUNDS = new ArrayList<>();
+public final class SoundManager {
+    private static List<GameMusic> allSounds = new ArrayList<>();
 
     /**
      * Constructor of the class.
@@ -26,7 +26,7 @@ public class SoundManager {
      */
     public static GameMusic create(final String musicFile) {
         final GameMusic sound = new GameMusic(musicFile);
-        ALL_SOUNDS.add(sound);
+        allSounds.add(sound);
         return sound;
     }
 
@@ -34,9 +34,9 @@ public class SoundManager {
      * Close all registered GameMusic objects.
      */
     public static synchronized void closeAll() {
-        for (final GameMusic sound : ALL_SOUNDS) {
+        for (final GameMusic sound : allSounds) {
             sound.close();
         }
-        ALL_SOUNDS.clear();
+        allSounds.clear();
     }
 }
