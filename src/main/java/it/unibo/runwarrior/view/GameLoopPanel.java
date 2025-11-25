@@ -52,7 +52,7 @@ public class GameLoopPanel extends JPanel implements Runnable {
     public GameLoopPanel(final JFrame frameMenu, final GameLoopController gameController) {
         this.gameController = gameController;
         this.frameMenu = frameMenu;
-        music = SoundManager.create("gameMusic.wav");
+        music = SoundManager.getAllSounds().get(0);
         initialize();
         this.chronometer = new ChronometerImpl();
     }

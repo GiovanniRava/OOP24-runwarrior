@@ -34,7 +34,7 @@ public class CharacterAnimationHandlerImpl implements CharacterAnimationHandler 
     private static final int LIMIT_ATTACK = 60;
     private final CharacterComand cmd;
     private final CharacterMovementHandler movement;
-    private final GameMusic sound;
+    //private final GameMusic sound;
     private int changeFrame;
     private boolean crossWalk;
     private int useAttackMoving;
@@ -62,7 +62,7 @@ public class CharacterAnimationHandlerImpl implements CharacterAnimationHandler 
     public CharacterAnimationHandlerImpl(final CharacterComand cmd, final CharacterMovementHandler move) {
         this.cmd = cmd;
         this.movement = move;
-        this.sound = SoundManager.create("sword.wav");
+        //this.sound = SoundManager.create("sword.wav");
     }
 
     /**
@@ -106,7 +106,7 @@ public class CharacterAnimationHandlerImpl implements CharacterAnimationHandler 
                 playerFrame = PlayerFrame.ATTACK_FRAME;
                 useAttackMoving = 0;
                 if (hasSword(movement.getPlayer())) {
-                    sound.play(false);
+                    SoundManager.getAllSounds().get(4).play(false);
                 }
             }
         } else if (cmd.isJumping()) {
@@ -114,13 +114,13 @@ public class CharacterAnimationHandlerImpl implements CharacterAnimationHandler 
             if (cmd.isAttacking() && movement.canAttack()) {
                 playerFrame = PlayerFrame.ATTACK_FRAME;
                 if (hasSword(movement.getPlayer())) {
-                    sound.play(false);
+                    SoundManager.getAllSounds().get(4).play(false);
                 }
             }
         } else if (cmd.isAttacking() && movement.canAttack()) {
             playerFrame = PlayerFrame.ATTACK_FRAME;
             if (hasSword(movement.getPlayer())) {
-                sound.play(false);
+                SoundManager.getAllSounds().get(4).play(false);
             }
         } else {
             playerFrame = PlayerFrame.STOP_FRAME;
