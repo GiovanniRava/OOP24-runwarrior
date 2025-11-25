@@ -33,7 +33,7 @@ public final class SoundManager {
     /**
      * Close all registered GameMusic objects.
      */
-    public static synchronized void closeAll() {
+    public static void closeAll() {
         for (final GameMusic sound : allSounds) {
             sound.close();
         }
