@@ -58,4 +58,13 @@ public class GameMusic {
             clip.stop();
         }
     }
+
+    /**
+     * Close the current istance of the clip
+     */
+    public void close() {
+        if (this.clip != null) {
+            this.clip.close();
+        }
+    }
 }
