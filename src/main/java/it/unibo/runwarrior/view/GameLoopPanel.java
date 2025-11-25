@@ -14,6 +14,7 @@ import javax.swing.SwingUtilities;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import it.unibo.runwarrior.controller.GameLoopController;
+import it.unibo.runwarrior.controller.SoundManager;
 import it.unibo.runwarrior.model.chronometer.api.Chronometer;
 import it.unibo.runwarrior.model.chronometer.impl.ChronometerImpl;
 import it.unibo.runwarrior.model.save.GameSaveManager;
@@ -51,7 +52,7 @@ public class GameLoopPanel extends JPanel implements Runnable {
     public GameLoopPanel(final JFrame frameMenu, final GameLoopController gameController) {
         this.gameController = gameController;
         this.frameMenu = frameMenu;
-        music = new GameMusic("gameMusic.wav");
+        music = SoundManager.create("gameMusic.wav");
         initialize();
         this.chronometer = new ChronometerImpl();
     }

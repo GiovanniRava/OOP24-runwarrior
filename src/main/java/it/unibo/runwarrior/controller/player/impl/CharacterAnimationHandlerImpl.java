@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import it.unibo.runwarrior.controller.SoundManager;
 import it.unibo.runwarrior.controller.player.CharacterComand;
 import it.unibo.runwarrior.controller.player.api.CharacterAnimationHandler;
 import it.unibo.runwarrior.controller.player.api.CharacterMovementHandler;
@@ -61,7 +62,7 @@ public class CharacterAnimationHandlerImpl implements CharacterAnimationHandler 
     public CharacterAnimationHandlerImpl(final CharacterComand cmd, final CharacterMovementHandler move) {
         this.cmd = cmd;
         this.movement = move;
-        this.sound = new GameMusic("sword.wav");
+        this.sound = SoundManager.create("sword.wav");
     }
 
     /**

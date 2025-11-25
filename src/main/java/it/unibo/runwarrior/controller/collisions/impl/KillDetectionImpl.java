@@ -9,6 +9,7 @@ import it.unibo.runwarrior.view.GameMusic;
 import it.unibo.runwarrior.model.player.impl.AbstractCharacterImpl;
 import it.unibo.runwarrior.controller.GameLoopController;
 import it.unibo.runwarrior.controller.HandlerMapElement;
+import it.unibo.runwarrior.controller.SoundManager;
 import it.unibo.runwarrior.controller.collisions.api.KillDetection;
 
 /**
@@ -33,8 +34,8 @@ public class KillDetectionImpl implements KillDetection {
     public KillDetectionImpl(final GameLoopController glc, final HandlerMapElement hM) {
         this.glc = glc;
         this.hM = hM;
-        sound1 = new GameMusic("jumpKill.wav");
-        sound2 = new GameMusic("hit.wav");
+        sound1 = SoundManager.create("jumpKill.wav");
+        sound2 = SoundManager.create("hit.wav");
     }
 
     /**

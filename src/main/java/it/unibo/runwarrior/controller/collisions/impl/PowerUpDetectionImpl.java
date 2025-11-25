@@ -11,6 +11,7 @@ import it.unibo.runwarrior.model.player.impl.AbstractCharacterImpl;
 import it.unibo.runwarrior.controller.player.api.CharacterMovementHandler;
 import it.unibo.runwarrior.controller.GameLoopController;
 import it.unibo.runwarrior.controller.PowerUpController;
+import it.unibo.runwarrior.controller.SoundManager;
 import it.unibo.runwarrior.controller.collisions.api.PowerUpDetection;
 import it.unibo.runwarrior.model.powerup.api.PowerUp;
 
@@ -38,8 +39,8 @@ public class PowerUpDetectionImpl implements PowerUpDetection {
         this.glc = glc;
         this.powersController = pCon;
         this.powerCollision = new ArrayList<>();
-        sound1 = new GameMusic("power.wav");
-        sound2 = new GameMusic("jumpKill.wav");
+        sound1 = SoundManager.create("power.wav");
+        sound2 = SoundManager.create("jumpKill.wav");
     }
 
     /**
