@@ -1,33 +1,29 @@
 package it.unibo.runwarrior.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 import it.unibo.runwarrior.view.GameMusic;
 
 /**
  * Manager to handle all the sounds of the game.
  */
-public final class SoundManager {
-    private static List<GameMusic> allSounds = new ArrayList<>();
 
+public final class SoundManager {
     public static final Logger LOGGER = Logger.getLogger(SoundManager.class.getName());
+    private static List<GameMusic> allSounds = new ArrayList<>();
 
     /**
      * Constructor of the class.
      */
-    private SoundManager() {
-        SoundManager.create("gameMusic.wav");
-        SoundManager.create("hit.wav");
-        SoundManager.create("jumpKill.wav");
-        SoundManager.create("power.wav");
-        SoundManager.create("sword.wav");
+    public SoundManager() {
+        create("gameMusic.wav");
+        create("hit.wav");
+        create("jumpKill.wav");
+        create("power.wav");
+        create("sword.wav");
     }
 
     /**
@@ -55,7 +51,12 @@ public final class SoundManager {
         allSounds.clear();
     }
 
+    /**
+     * Getters for allsounds.
+     *
+     * @return the list of sounds
+     */
     public static List<GameMusic> getAllSounds() {
-        return allSounds;
+        return new ArrayList<>(allSounds);
     }
 }

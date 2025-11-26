@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
 import it.unibo.runwarrior.controller.GameLoopController;
+import it.unibo.runwarrior.controller.SoundManager;
 import it.unibo.runwarrior.model.Score;
 import it.unibo.runwarrior.model.save.GameSaveManager;
 
@@ -93,6 +94,7 @@ public class Menu extends JPanel {
                 final int n = JOptionPane.showConfirmDialog(frameMenu, "Do you want to save your game data?", 
                     "Quitting...", JOptionPane.YES_NO_OPTION); 
                 if (n == JOptionPane.YES_OPTION) {
+                    SoundManager.closeAll();
                     GameSaveManager.getInstance().saveGame();
                     System.exit(0);
                 } else if (n == JOptionPane.NO_OPTION) {

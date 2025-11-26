@@ -12,7 +12,6 @@ import it.unibo.runwarrior.model.player.PlayerFrame;
 import it.unibo.runwarrior.model.player.StickWizard;
 import it.unibo.runwarrior.model.player.SwordWarrior;
 import it.unibo.runwarrior.model.player.api.Character;
-import it.unibo.runwarrior.view.GameMusic;
 
 /**
  * Class that handle player frames changing.
