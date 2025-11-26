@@ -53,7 +53,7 @@ public class GameLoopController {
     private final EnemySpawner enemySpawner;
     private final CoinController coinController;
     private final ScoreController scoreController;
-    private final SoundManager soundManager;
+    //private final SoundManager soundManager;
     private final int levelIndex;
 
     /**
@@ -77,7 +77,7 @@ public class GameLoopController {
         }
         this.commands = new CharacterComand();
         this.mapHandler = new HandlerMapElement(gameMap);
-        this.soundManager = new SoundManager();
+        //this.soundManager = new SoundManager();
         this.powerController = new PowerUpController(this, mapHandler, gameMap.getMapData());
         this.powersManager = new PowerUpManager(powerController.getPowerUps(), mapHandler);
         this.powerUpsHandler = new PowersHandler(this, commands, mapHandler, powerController);

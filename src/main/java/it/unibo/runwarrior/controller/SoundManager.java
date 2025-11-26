@@ -15,15 +15,19 @@ public final class SoundManager {
     public static final Logger LOGGER = Logger.getLogger(SoundManager.class.getName());
     private static List<GameMusic> allSounds = new ArrayList<>();
 
-    /**
-     * Constructor of the class.
-     */
-    public SoundManager() {
+    static {
         create("gameMusic.wav");
         create("hit.wav");
         create("jumpKill.wav");
         create("power.wav");
         create("sword.wav");
+    }
+
+    /**
+     * Constructor of the class.
+     */
+    private SoundManager() {
+        //void
     }
 
     /**

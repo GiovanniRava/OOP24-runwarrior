@@ -167,7 +167,6 @@ public class GameLoopPanel extends JPanel implements Runnable {
             public void windowClosed(final WindowEvent e) {
                 endGame();
                 music.stop();
-                SoundManager.closeAll();
                 SwingUtilities.invokeLater(() -> {
                     frameMenu.getContentPane().removeAll();
                     final Menu menuPanel = new Menu(frameMenu);
